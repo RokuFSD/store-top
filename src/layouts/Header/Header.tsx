@@ -1,15 +1,11 @@
 import React from 'react';
+import Navbar from '../../components/Navbar/Navbar';
 
 function Header() {
   return (
     <header>
       <h2>FakeStore</h2>
-      <nav>
-        <ul>
-          <li>home</li>
-          <li>store</li>
-        </ul>
-      </nav>
+      <Navbar/>
     </header>
   );
 }
