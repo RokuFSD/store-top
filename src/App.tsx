@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -13,7 +12,9 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
+        <button type="button" onClick={() => setCount((newCount) => newCount + 1)}>
+          count is {count}
+        </button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
