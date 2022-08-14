@@ -1,12 +1,12 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Navbar() {
   return (
     <nav>
-      <ul>
-        <NavLink to="/">home</NavLink>
-        <NavLink to="/store">store</NavLink>
+      <ul className='flex gap-12'>
+        <Link to="/" className="navlink">home</Link>
+        <Link to='/store' className='navlink'>store</Link>
       </ul>
     </nav>
   );
