@@ -8,7 +8,7 @@ type HeaderProps = {
 
 function Header({ isSmallScreen }: HeaderProps) {
   return (
-    <header className="flex w-full h-24 items-center justify-between px-24 bg-white font-display">
+    <header className="flex w-full h-24 items-center justify-between px-5 bg-white font-display md:px-24">
       <h2 className="text-2xl pointer-events-none">FakeStore</h2>
       {isSmallScreen ? <MobileNavbar/> : <Navbar />}
     </header>
