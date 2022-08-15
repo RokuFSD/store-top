@@ -4,7 +4,7 @@ import Header from './layouts/Header/Header';
 import useMediaQuery from './hooks/useMediaQuery';
 
 function App() {
-  const { isSmallScreen } = useMediaQuery('(min-width: 768px)');
+  const { isSmallScreen } = useMediaQuery('(max-width: 768px)');
   return (
     <>
       <Header isSmallScreen={isSmallScreen} />
