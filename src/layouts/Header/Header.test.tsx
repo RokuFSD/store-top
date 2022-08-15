@@ -5,14 +5,25 @@ import Header from './Header';
 import '@testing-library/jest-dom/';
 
 describe('Header layout', () => {
+
   it('renders on the page', () => {
-    render(<Header />, {wrapper: BrowserRouter});
+    render(<Header isSmallScreen={false} />, {wrapper: BrowserRouter});
     expect(screen.getByText(/fakestore/i)).toBeInTheDocument();
   });
 
   it('renders the nav component', () => {
-    render(<Header />, {wrapper: BrowserRouter});
+    render(<Header isSmallScreen={false} />, {wrapper: BrowserRouter});
     expect(screen.getByText(/home/i)).toBeInTheDocument();
     expect(screen.getByText('store')).toBeInTheDocument();
+  })
+
+  it('show the nav mobile component on small screens', () => {
+    render(<Header isSmallScreen/>, {wrapper: BrowserRouter});
+    expect(screen.getByText(/hamburger menu/i)).toBeInTheDocument();
+  })
+
+  it('hide the nav mobile component on large screens', () => {
+    render(<Header isSmallScreen={false}/>, {wrapper: BrowserRouter});
+    expect(screen.queryByText(/hamburger menu/i)).not.toBeInTheDocument();
   })
 });
