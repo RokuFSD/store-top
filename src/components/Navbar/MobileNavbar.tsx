@@ -6,6 +6,7 @@ function MobileNavbar() {
     <>
       <div className="mobile-navbar">
         <svg
+          data-testid='hamburger-menu'
           className="w-6 h-6"
           fill="none"
           stroke="currentColor"

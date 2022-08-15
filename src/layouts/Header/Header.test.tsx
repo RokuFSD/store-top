@@ -19,11 +19,11 @@ describe('Header layout', () => {
 
   it('show the nav mobile component on small screens', () => {
     render(<Header isSmallScreen/>, {wrapper: BrowserRouter});
-    expect(screen.getByText(/hamburger menu/i)).toBeInTheDocument();
+    expect(screen.getByTestId('hamburger-menu')).toBeInTheDocument();
   })
 
   it('hide the nav mobile component on large screens', () => {
     render(<Header isSmallScreen={false}/>, {wrapper: BrowserRouter});
-    expect(screen.queryByText(/hamburger menu/i)).not.toBeInTheDocument();
+    expect(screen.queryByTestId('hamburger-menu')).not.toBeInTheDocument();
   })
 });
