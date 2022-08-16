@@ -8,7 +8,8 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "jest",
-    "test:watchAll": "jest --watchAll"
+    "test:watchAll": "jest --watchAll",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "@types/react-router-dom": "^5.3.3",
