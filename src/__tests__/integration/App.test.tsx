@@ -23,7 +23,7 @@ beforeEach(() => {
 
 describe('App Component', () => {
   it('should render the app', () => {
-    expect(screen.getByText(/you are in the home/i)).toBeInTheDocument();
+    expect(screen.getByText(/Wear the best/i)).toBeInTheDocument();
   });
   it('should render the navbar', () => {
     const link = screen.getByText('store');

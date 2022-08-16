@@ -3,13 +3,37 @@
 @tailwind utilities;
 
 @layer base {
-  body{
-    @apply bg-neutral-200
+  body {
+    @apply bg-neutral-200;
   }
 }
 
-@layer components{
-  .navlink{
-    @apply rounded-xl transition-all w-16 h-8 flex items-center justify-center hover:bg-neutral-700 hover:text-white
+@layer components {
+  .navlink {
+    @apply rounded-xl transition-all w-16 h-8 flex items-center justify-center hover:bg-neutral-700 hover:text-white;
+  }
+
+  .custom-shape-divider-bottom-1660620352 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+  }
+
+  .custom-shape-divider-bottom-1660620352 svg {
+    position: relative;
+    display: block;
+    width: calc(251% + 1.3px);
+    height: 194px;
+    transform: rotateY(180deg);
+  }
+
+  .custom-shape-divider-bottom-1660620352 .shape-fill {
+    fill: #90caf9;
   }
 }
+
+/*90CAF9*/
