@@ -47,4 +47,10 @@
   fill: #90caf9;
 }
 
+@media (min-width: 1024px) {
+  .custom-shape-divider-bottom-1660761801 svg {
+    height: 100px;
+  }
+}
+
 /*90CAF9*/

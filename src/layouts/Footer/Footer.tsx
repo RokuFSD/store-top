@@ -2,7 +2,7 @@ import React from 'react';
 
 function Footer() {
   return (
-    <footer className="grid z-0 items-end">
+    <footer className="grid z-0 items-end lg:absolute bottom-0 w-full">
       <p className="z-10 absolute justify-self-center py-4 text-sm">RokuFSD</p>
       <div className="custom-shape-divider-bottom-1660761801">
         <svg

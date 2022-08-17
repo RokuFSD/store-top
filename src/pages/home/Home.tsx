@@ -1,15 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Home() {
   return (
-    <>
-      <main>
-        <section className="flex flex-col items-center w-full">
-          <div className="flex w-11/12 max-w-md gap-y-12 flex-col order-2">
-            <div>
-              <span className="tracking-widest text-2xl text-neutral-500">Wear the best</span>
-              <h1 className="text-4xl font-bold">Make people fall in love with your clothes</h1>
-            </div>
+    <main>
+      <section className="flex flex-col items-center w-full lg:flex-row justify-center">
+        <div className="flex w-11/12 max-w-md gap-y-12 flex-col order-2 lg:order-1 max-w-lg px-3">
+          <div>
+            <span className="tracking-widest text-2xl text-neutral-500">Wear the best</span>
+            <h1 className="text-4xl font-bold">Make people fall in love with your clothes</h1>
+          </div>
+          <Link to="/store">
             <button
               type="button"
               className="flex items-center justify-center transition-all border-2 border-neutral-800 text-xl bg-neutral-800 text-neutral-200 rounded-full w-40 h-11 hover:bg-transparent hover:text-neutral-800 withArrow"
@@ -29,17 +30,15 @@ function Home() {
                 />
               </svg>
             </button>
-          </div>
-          <img
-            src="src/assets/thrift-shop-not-css.svg"
-            alt="thrift shop"
-            className="w-full max-w-2xl order-1"
-          />
-        </section>
-      </main>
-
-      ;
-    </>
+          </Link>
+        </div>
+        <img
+          src="src/assets/thrift-shop-not-css.svg"
+          alt="thrift shop"
+          className="w-full max-w-2xl order-1 lg:order-2 lg:max-w-lg 2xl:max-w-3xl"
+        />
+      </section>
+    </main>
   );
 }
 
