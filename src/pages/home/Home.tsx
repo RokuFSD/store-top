@@ -3,11 +3,11 @@ import React from 'react';
 function Home() {
   return (
     <main>
-      <section className="flex justify-around items-center">
-        <div className="w-4/12 flex flex-wrap gap-12">
+      <section className="flex flex-col items-center w-full">
+        <div className="flex w-11/12 max-w-md gap-y-12 flex-col order-2">
           <div>
             <span className="tracking-widest text-2xl text-neutral-500">Wear the best</span>
-            <h1 className="text-6xl font-bold">Make people fall in love with your clothes</h1>
+            <h1 className="text-4xl font-bold">Make people fall in love with your clothes</h1>
           </div>
           <button
             type="button"
@@ -29,7 +29,11 @@ function Home() {
             </svg>
           </button>
         </div>
-        <img src="src/assets/thrift-shop-not-css.svg" alt="thrift shop" className="w-176" />
+        <img
+          src="src/assets/thrift-shop-not-css.svg"
+          alt="thrift shop"
+          className="w-full max-w-2xl order-1"
+        />
       </section>
       <div className="custom-shape-divider-bottom-1660620352">
         <svg
