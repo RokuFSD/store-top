@@ -13,8 +13,8 @@ function useMediaQuery(query: string) {
   }
 
   useEffect(() => {
-    mediaQuery.addEventListener('change', () => handleMediaQueryChange(mediaQuery));
     handleMediaQueryChange(mediaQuery);
+    mediaQuery.addEventListener('change', () => handleMediaQueryChange(mediaQuery));
     return () => {
       mediaQuery.removeEventListener('change', () => handleMediaQueryChange(mediaQuery));
     };

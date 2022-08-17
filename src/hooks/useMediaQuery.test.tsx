@@ -30,7 +30,7 @@ function getMediaQuery(query: string): { isSmallScreen: boolean } {
 
 beforeEach(() => {
   Object.defineProperty(window, 'matchMedia', matches);
-})
+});
 
 describe('useMediaQuery', () => {
   it('should return true if media query matches', () => {

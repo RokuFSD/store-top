@@ -13,7 +13,7 @@
     @apply rounded-xl transition-all w-16 h-8 flex items-center justify-center hover:bg-neutral-700 hover:text-white;
   }
 
-  .withArrow{
+  .withArrow {
     position: relative;
   }
 
@@ -25,28 +25,26 @@
 
   .withArrow:hover > svg {
     visibility: visible;
-    left:120%;
-    @apply animate-slide-in-left
+    left: 120%;
+    @apply animate-slide-in-left;
   }
+}
 
-  .custom-shape-divider-bottom-1660620352 {
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-    transform: rotate(180deg);
-  }
+.custom-shape-divider-bottom-1660761801 {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
 
-  .custom-shape-divider-bottom-1660620352 svg {
-    position: relative;
-    display: block;
-    width: calc(251% + 1.3px);
-    height: 194px;
-    transform: rotateY(180deg);
-  }
+.custom-shape-divider-bottom-1660761801 svg {
+  position: relative;
+  display: block;
+  width: calc(145% + 1.3px);
+  height: 163px;
+}
 
-  .custom-shape-divider-bottom-1660620352 .shape-fill {
-    fill: #90caf9;
-  }
+.custom-shape-divider-bottom-1660761801 .shape-fill {
+  fill: #90caf9;
 }
 
 /*90CAF9*/
