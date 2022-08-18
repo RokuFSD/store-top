@@ -24,10 +24,32 @@ module.exports = {
           to: {
             transform: 'translateX(0)'
           }
+        },
+        'slide-from-top': {
+          from: {
+            opacity: 0,
+            transform: 'translateY(-100%)'
+          },
+          to: {
+            opacity: 1,
+            transform: 'translateY(0)'
+          }
+        },
+        'slide-from-bottom': {
+          from: {
+            opacity: 1,
+            transform: 'translateY(0)'
+          },
+          to: {
+            opacity: 0,
+            transform: 'translateY(-100%)'
+          }
         }
       },
-      animation:{
-        'slide-in-left': 'slide-in-left 0.5s ease-in-out'
+      animation: {
+        'slide-in-left': 'slide-in-left 0.5s ease-in-out',
+        'slide-from-top': 'slide-from-top 0.5s ease-in-out',
+        'slide-from-bottom': 'slide-from-bottom 0.5s ease-in-out'
       }
     }
   },
