@@ -1,5 +1,7 @@
 import React, { ReactNode, useState, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import HamburgerSvg from '../Svg/HamburgerSvg';
+import useUpdateEffect from '../../hooks/useUpdateEffect';
 
 type Props = {
   comp: ReactNode;
@@ -8,21 +10,30 @@ type Props = {
 function WithToggle({ comp }: Props) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const location = useLocation();
 
-  const handleClose: () => Promise<void> = () =>
+  const handleClose: (time: number) => Promise<void> = (time) =>
     new Promise<void>((resolve) => {
+      menuRef.current?.classList.remove('animate-slide-from-top');
       menuRef.current?.classList.add('animate-slide-from-bottom');
       setTimeout(() => {
         resolve();
-      }, 400);
+      }, time);
     });
 
   const handleClick = async () => {
     if (isOpen) {
-      await handleClose();
+      await handleClose(400);
     }
     setIsOpen(!isOpen);
   };
+
+  useUpdateEffect(() => {
+    handleClose(300).then(() => {
+      setIsOpen(false);
+    });
+  }, [location]);
+
   return (
     <>
       <button title="hamburger" type="button" onClick={handleClick} aria-label="hamburger">
@@ -30,7 +41,7 @@ function WithToggle({ comp }: Props) {
       </button>
       <section
         className={`${
-          isOpen ? 'block' : 'hidden'
+          isOpen ? 'visible' : 'hidden'
         } animate-slide-from-top absolute w-full left-0 top-full z-0`}
         ref={menuRef}
         data-testid="toggable-section"

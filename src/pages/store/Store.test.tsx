@@ -25,8 +25,7 @@ describe('Store', () => {
   it('should render a error message when there is an error', async () => {
     global.fetch = jest.fn().mockImplementation(() =>
       Promise.resolve({
-        json: () =>
-          Promise.resolve([]),
+        json: () => Promise.resolve([]),
       })
     );
     // @ts-expect-error no overload matches this call
