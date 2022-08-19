@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
 import App from '../../App';
 import '@testing-library/jest-dom/';
@@ -18,7 +18,7 @@ Object.defineProperty(window, 'matchMedia', {
 });
 
 beforeEach(() => {
-  render(<App />, { wrapper: BrowserRouter });
+  render(<App />, { wrapper: MemoryRouter });
 });
 
 describe('App Component', () => {
@@ -34,4 +34,9 @@ describe('App Component', () => {
     await userEvent.click(link);
     expect(screen.getByText(/you are in the store/i)).toBeInTheDocument();
   });
+  it('should go to the store page when clicking on the button', async() => {
+    const button = screen.getByText(/shop now/i);
+    await userEvent.click(button);
+    expect(screen.getByText(/you are in the store/i)).toBeInTheDocument();
+  })
 });

@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, useState, useRef } from 'react';
 import HamburgerSvg from '../Svg/HamburgerSvg';
 
 type Props = {
@@ -7,7 +7,7 @@ type Props = {
 
 function WithToggle({ comp }: Props) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const menuRef = React.useRef<HTMLDivElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   const handleClose: () => Promise<void> = () =>
     new Promise<void>((resolve) => {
@@ -25,14 +25,15 @@ function WithToggle({ comp }: Props) {
   };
   return (
     <>
-      <button type="button" onClick={handleClick}>
+      <button title="hamburger" type="button" onClick={handleClick} aria-label="hamburger">
         <HamburgerSvg />
       </button>
       <section
         className={`${
-          isOpen ? 'visible' : 'hidden'
-        } animate-slide-from-top absolute w-full left-0 top-full z-0"`}
+          isOpen ? 'block' : 'hidden'
+        } animate-slide-from-top absolute w-full left-0 top-full z-0`}
         ref={menuRef}
+        data-testid="toggable-section"
       >
         {comp}
       </section>
