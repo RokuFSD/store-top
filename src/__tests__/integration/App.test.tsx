@@ -17,6 +17,17 @@ Object.defineProperty(window, 'matchMedia', {
   })),
 });
 
+global.fetch = jest.fn().mockImplementation(() =>
+  Promise.resolve({
+    json: () =>
+      Promise.resolve([
+        { id: 1, title: 'Product 1', price: 1 },
+        { id: 2, title: 'Product 2', price: 2 },
+        { id: 3, title: 'Product 3', price: 3 },
+      ]),
+  })
+);
+
 beforeEach(() => {
   render(<App />, { wrapper: MemoryRouter });
 });
@@ -32,11 +43,11 @@ describe('App Component', () => {
   it('should change the page when clicking on the navbar', async () => {
     const link = screen.getByText('store');
     await userEvent.click(link);
-    expect(screen.getByText(/you are in the store/i)).toBeInTheDocument();
+    expect(screen.getByText(/Product 1/i)).toBeInTheDocument();
   });
-  it('should go to the store page when clicking on the button', async() => {
+  it('should go to the store page when clicking on the button', async () => {
     const button = screen.getByText(/shop now/i);
     await userEvent.click(button);
-    expect(screen.getByText(/you are in the store/i)).toBeInTheDocument();
-  })
+    expect(screen.getByText(/Product 1/i)).toBeInTheDocument();
+  });
 });
