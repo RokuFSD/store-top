@@ -8,9 +8,9 @@ global.fetch = jest.fn().mockImplementation(() =>
   Promise.resolve({
     json: () =>
       Promise.resolve([
-        { id: 1, title: 'Product 1', price: 1 },
-        { id: 2, title: 'Product 2', price: 2 },
-        { id: 3, title: 'Product 3', price: 3 },
+        { id: 1, title: 'Product 1', price: 1, images:[''] },
+        { id: 2, title: 'Product 2', price: 2, images:[''] },
+        { id: 3, title: 'Product 3', price: 3, images:[''] },
       ]),
   })
 );
