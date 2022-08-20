@@ -12,3 +12,8 @@ export interface IProduct {
   description: string;
   images: string[];
 }
+
+export interface ICategory {
+  id: number;
+  name: string;
+}
