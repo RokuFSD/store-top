@@ -5,12 +5,10 @@ import HeroImg from '../../components/Hero/HeroImg/HeroImg';
 
 function Home() {
   return (
-    <main>
-      <Hero>
-        <HeroDescription />
-        <HeroImg />
-      </Hero>
-    </main>
+    <Hero>
+      <HeroDescription />
+      <HeroImg />
+    </Hero>
   );
 }
 

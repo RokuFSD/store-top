@@ -2,6 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/';
 import { act } from 'react-dom/test-utils';
+import { BrowserRouter } from 'react-router-dom';
 import Store from './Store';
 
 global.fetch = jest.fn().mockImplementation(() =>
@@ -18,7 +19,7 @@ global.fetch = jest.fn().mockImplementation(() =>
 describe('Store', () => {
   it('should render the store', async () => {
     // @ts-expect-error no overload matches this call
-    await act(async () => render(<Store />));
+    await act(async () => render(<Store />, {wrapper: BrowserRouter}));
     expect(screen.getByText(/Product 1/i)).toBeInTheDocument();
   });
 
@@ -29,7 +30,7 @@ describe('Store', () => {
       })
     );
     // @ts-expect-error no overload matches this call
-    await act(async () => render(<Store />));
+    await act(async () => render(<Store />, {wrapper: BrowserRouter}));
     expect(screen.getByText(/Can not find/i)).toBeInTheDocument();
   });
 });

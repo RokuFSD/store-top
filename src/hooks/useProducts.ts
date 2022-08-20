@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { IProduct } from '../types/api';
 
-const URL = 'https://api.escuelajs.co/api/v1/products';
+const URL = 'https://api.escuelajs.co/api/v1';
 
-function useProducts(query = ''): {
+function useProducts(endpoint: string): {
   products: IProduct[];
   loading: boolean;
   error: string;
@@ -15,7 +15,7 @@ function useProducts(query = ''): {
     let ignore = false;
 
     function fetchProducts() {
-      fetch(`${URL}${query}`)
+      fetch(`${URL}${endpoint}`)
         .then((res) => res.json())
         .then((data: IProduct[]) => {
           if (!ignore) {
@@ -36,7 +36,7 @@ function useProducts(query = ''): {
     return () => {
       ignore = true;
     };
-  }, [query]);
+  }, [endpoint]);
   return { products, loading, error };
 }
 
