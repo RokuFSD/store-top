@@ -6,9 +6,8 @@
   body {
     @apply bg-neutral-200;
   }
-
-  .main{
-    min-height: 100vh;
+  .main {
+    min-height: calc(100vh - 196px);
   }
 }
 
@@ -41,7 +40,7 @@
     border-radius: 10px;
   }
 
-  .card img{
+  .card img {
     width: 300px;
     height: 200px;
   }
