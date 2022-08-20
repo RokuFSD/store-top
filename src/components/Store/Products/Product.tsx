@@ -8,7 +8,7 @@ type ProductProps = {
 
 function Product({ product }: ProductProps) {
   return (
-    <div className="flex flex-col w-11/12 overflow-hidden gap-3 card md:w-72">
+    <div className="flex flex-col w-11/12 overflow-hidden gap-3 card md:w-7:">
       <img src={product.images[0]} alt="product" />
       <h2 className="font-semibold px-1">
         {product.title}

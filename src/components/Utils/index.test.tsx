@@ -32,4 +32,5 @@ describe('WithToggle', () => {
     await userEvent.click(button);
     expect(section.className).toContain('animate-slide-from-bottom');
   });
+
 });

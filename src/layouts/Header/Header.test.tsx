@@ -26,4 +26,5 @@ describe('Header layout', () => {
     render(<Header isSmallScreen={false}/>, {wrapper: BrowserRouter});
     expect(screen.queryByTestId('hamburger-menu')).not.toBeInTheDocument();
   })
+
 });

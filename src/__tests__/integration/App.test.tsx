@@ -50,4 +50,5 @@ describe('App Component', () => {
     await userEvent.click(button);
     expect(screen.getByText(/Product 1/i)).toBeInTheDocument();
   });
+
 });

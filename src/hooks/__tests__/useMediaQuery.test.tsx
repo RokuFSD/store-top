@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import useMediaQuery from './useMediaQuery';
+import useMediaQuery from '../useMediaQuery';
 
 /* It should use renderHook from @testing-library/react to test the hook */
 
