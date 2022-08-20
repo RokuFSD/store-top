@@ -6,6 +6,10 @@
   body {
     @apply bg-neutral-200;
   }
+
+  .main{
+    min-height: 100vh;
+  }
 }
 
 @layer components {
