@@ -19,12 +19,14 @@ Object.defineProperty(window, 'matchMedia', {
 
 global.fetch = jest.fn().mockImplementation(() =>
   Promise.resolve({
+    ok: true,
     json: () =>
       Promise.resolve([
         { id: 1, title: 'Product 1', price: 1, images: [''] },
         { id: 2, title: 'Product 2', price: 2, images: [''] },
         { id: 3, title: 'Product 3', price: 3, images: [''] },
       ]),
+
   })
 );
 
@@ -50,5 +52,4 @@ describe('App Component', () => {
     await userEvent.click(button);
     expect(screen.getByText(/Product 1/i)).toBeInTheDocument();
   });
-
 });

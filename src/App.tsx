@@ -6,11 +6,12 @@ import Home from './pages/home/Home';
 import Store from './pages/store/Store';
 import useMediaQuery from './hooks/useMediaQuery';
 import Main from './layouts/Main/Main';
+import CartProvider from './context/Cart/cartContext';
 
 function App() {
   const { isSmallScreen } = useMediaQuery('(max-width: 767px)');
   return (
-    <>
+    <CartProvider>
       <Header isSmallScreen={isSmallScreen} />
       <Main>
         <Routes>
@@ -19,7 +20,7 @@ function App() {
         </Routes>
       </Main>
       <Footer />
-    </>
+    </CartProvider>
   );
 }
 

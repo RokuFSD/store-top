@@ -7,6 +7,7 @@ import Store from './Store';
 
 global.fetch = jest.fn().mockImplementation(() =>
   Promise.resolve({
+    ok: true,
     json: () =>
       Promise.resolve([
         { id: 1, title: 'Product 1', price: 1, images:[''] },
@@ -19,7 +20,7 @@ global.fetch = jest.fn().mockImplementation(() =>
 describe('Store', () => {
   it('should render the store', async () => {
     // @ts-expect-error no overload matches this call
-    await act(async () => render(<Store />, {wrapper: BrowserRouter}));
+    await act(async () => render(<Store  isSmallScreen/>, {wrapper: BrowserRouter}));
     expect(screen.getByText(/Product 1/i)).toBeInTheDocument();
   });
 
@@ -30,7 +31,7 @@ describe('Store', () => {
       })
     );
     // @ts-expect-error no overload matches this call
-    await act(async () => render(<Store />, {wrapper: BrowserRouter}));
-    expect(screen.getByText(/Can not find/i)).toBeInTheDocument();
+    await act(async () => render(<Store  isSmallScreen/>, {wrapper: BrowserRouter}));
+    expect(screen.getByText(/There is an error/i)).toBeInTheDocument();
   });
 });
