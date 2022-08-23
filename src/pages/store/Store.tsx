@@ -5,7 +5,7 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 
 function Store() {
   return (
-    <section className="flex py-16 justify-center gap-20">
+    <section className="flex flex-col items-center py-16 justify-center gap-20 lg:flex-row lg:items-start">
       <Sidebar />
       <Routes>
         <Route path="/">
