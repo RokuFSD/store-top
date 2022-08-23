@@ -36,7 +36,7 @@ function Sidebar() {
   }, []);
 
   return (
-    <section className="flex flex-col">
+    <section className="flex flex-col px-4">
       <h1 className="text-2xl">Categories</h1>
       <NavLink to="/store">All Products</NavLink>
       {categories.map((category) => (

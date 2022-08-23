@@ -11,15 +11,19 @@ function ProductsList() {
     return <div>{error}</div>;
   }
   return (
-    <>
-      {loading && <div>Loading...</div>}
-      <section className="grid max-w-fit gap-4 place-items-center md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {products.map((product) => (
-          <Product key={product.id} product={product} />
-        ))}
-      </section>
-    </>
+    <div className="productsList">
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <section className="grid gap-4 place-items-center md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {products.map((product) => (
+            <Product key={product.id} product={product} />
+          ))}
+        </section>
+      )}
+    </div>
   );
 }
 
 export default ProductsList;
+
