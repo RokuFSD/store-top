@@ -12,7 +12,7 @@ function Sidebar() {
     return <div>There is an error</div>;
   }
   return (
-    <section className="flex flex-col px-4">
+    <section className="flex flex-col px-4 w-56">
       <h1 className="text-2xl">Categories</h1>
       <NavLink to="/store">All Products</NavLink>
       {!categories ? (

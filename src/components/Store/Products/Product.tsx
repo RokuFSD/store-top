@@ -10,7 +10,7 @@ function Product({ product }: ProductProps) {
   return (
     <div className="flex flex-col overflow-hidden gap-3 card md:w-60">
       <img src={product.images[0]} alt="product" />
-      <h2 className="font-semibold px-1">
+      <h2 className="font-semibold px-1 h-20">
         {product.title}
         <span className="block line-clamp-2 font-normal text-xs w-44">{product.description}</span>
       </h2>
