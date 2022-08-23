@@ -20,7 +20,7 @@ function useProducts(endpoint: string): {
         .then((data: IProduct[]) => {
           if (!ignore) {
             if (!data.length) {
-              throw new Error('Can not find products');
+              throw new Error('There are no products');
             }
             setProducts(data);
           }
