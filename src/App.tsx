@@ -8,14 +8,14 @@ import useMediaQuery from './hooks/useMediaQuery';
 import Main from './layouts/Main/Main';
 
 function App() {
-  const { isSmallScreen } = useMediaQuery('(max-width: 576px)');
+  const { isSmallScreen } = useMediaQuery('(max-width: 767px)');
   return (
     <>
       <Header isSmallScreen={isSmallScreen} />
       <Main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/store/*" element={<Store/>} />
+          <Route path="/store/*" element={<Store isSmallScreen={isSmallScreen} />} />
         </Routes>
       </Main>
       <Footer />

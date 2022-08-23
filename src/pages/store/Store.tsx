@@ -3,10 +3,14 @@ import { Route, Routes } from 'react-router-dom';
 import ProductsList from '../../components/Store/Products/ProductsList';
 import Sidebar from '../../components/Sidebar/Sidebar';
 
-function Store() {
+type StoreProps = {
+  isSmallScreen: boolean;
+}
+
+function Store({ isSmallScreen }: StoreProps) {
   return (
-    <section className="flex flex-col items-center py-16 justify-center gap-20 lg:flex-row lg:items-start">
-      <Sidebar />
+    <section className="flex flex-col items-center py-16 justify-center gap-20 md:flex-row md:items-start">
+      {isSmallScreen ? null : <Sidebar/>}
       <Routes>
         <Route path="/">
           <Route index element={<ProductsList />} />
