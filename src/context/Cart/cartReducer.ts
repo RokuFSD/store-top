@@ -8,6 +8,7 @@ interface CartItem {
 export type CartState = {
   cartItems: CartItem[];
   total: number;
+  ids: { [key: number]: boolean };
 };
 
 export type CartAction =
@@ -19,6 +20,7 @@ export type CartAction =
 export const initialState: CartState = {
   cartItems: [],
   total: 0,
+  ids: {},
 };
 
 export const cartReducer = (state: CartState, action: CartAction) => {
@@ -28,14 +30,16 @@ export const cartReducer = (state: CartState, action: CartAction) => {
         ...state,
         cartItems: [...state.cartItems, action.payload],
         total: state.total + action.payload.price,
+        ids: { ...state.ids, [action.payload.id]: true },
       };
     case 'REMOVE_FROM_CART':
       // eslint-disable-next-line no-case-declarations
-      const findCartItem =  state.cartItems.find((item) => item.id === action.payload)
+      const findCartItem = state.cartItems.find((item) => item.id === action.payload);
       return {
         ...state,
         cartItems: state.cartItems.filter((item) => item.id !== action.payload),
         total: state.total - (findCartItem ? findCartItem.price : 0),
+        ids: { ...state.ids, [action.payload]: false },
       };
     case 'UPDATE_CART_ITEM':
       return {
@@ -52,6 +56,7 @@ export const cartReducer = (state: CartState, action: CartAction) => {
         ...state,
         cartItems: [],
         total: 0,
+        ids: {},
       };
     default:
       return state;

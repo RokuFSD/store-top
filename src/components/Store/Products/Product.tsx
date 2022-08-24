@@ -1,12 +1,20 @@
 import React from 'react';
 import { IProduct } from '../../../types/api';
-import PlusSvg from '../../Svg/PlusSvg';
+import { useCartContext, useCartDispatch } from '../../../context/Cart/cartContext';
+import ProductButton from '../../Button/ProductButton';
 
 type ProductProps = {
   product: IProduct;
 };
 
 function Product({ product }: ProductProps) {
+  const cart = useCartContext();
+  const dispatch = useCartDispatch();
+
+  function addToCart() {
+    dispatch?.({ type: 'ADD_TO_CART', payload: { ...product, name: product.title, quantity: 1 } });
+  }
+
   return (
     <div className="flex flex-col overflow-hidden gap-3 w-64 card md:w-60">
       <img src={product.images[0]} alt="product" />
@@ -16,13 +24,7 @@ function Product({ product }: ProductProps) {
       </h2>
       <div className="w-full flex justify-between items-center px-1 my-1">
         <span className="text-md">$ {product.price}</span>
-        <button
-          type="button"
-          className="flex items-center gap-2 bg-neutral-800 text-white rounded-lg p-1"
-        >
-          <PlusSvg />
-          <span className="text-sm">Add to cart</span>
-        </button>
+        <ProductButton onClick={() => addToCart()} disabled={cart?.ids[product.id]}/>
       </div>
     </div>
   );
