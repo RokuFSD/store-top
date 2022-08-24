@@ -15,7 +15,12 @@ function Cart() {
           <CartItem key={item.id} item={item} />
         ))}
       </section>
-      <div>{cartState?.total}</div>
+      <div>
+        {cartState?.total}
+        <button type="button" className="btn" disabled>
+          CheckOut
+        </button>
+      </div>
     </>
   );
 }
