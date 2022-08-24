@@ -12,7 +12,10 @@ function Product({ product }: ProductProps) {
   const dispatch = useCartDispatch();
 
   function addToCart() {
-    dispatch?.({ type: 'ADD_TO_CART', payload: { ...product, name: product.title, quantity: 1 } });
+    dispatch?.({
+      type: 'ADD_TO_CART',
+      payload: { ...product, name: product.title, quantity: 1, image: product.images[0] },
+    });
   }
 
   return (
@@ -24,7 +27,7 @@ function Product({ product }: ProductProps) {
       </h2>
       <div className="w-full flex justify-between items-center px-1 my-1">
         <span className="text-md">$ {product.price}</span>
-        <ProductButton onClick={() => addToCart()} disabled={cart?.ids[product.id]}/>
+        <ProductButton onClick={() => addToCart()} disabled={cart?.ids[product.id]} />
       </div>
     </div>
   );

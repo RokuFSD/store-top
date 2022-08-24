@@ -1,20 +1,22 @@
-interface CartItem {
+export interface ICartItem {
   id: number;
   name: string;
   price: number;
   quantity: number;
+  image: string;
 }
 
 export type CartState = {
-  cartItems: CartItem[];
+  cartItems: ICartItem[];
   total: number;
   ids: { [key: number]: boolean };
 };
 
 export type CartAction =
-  | { type: 'ADD_TO_CART'; payload: CartItem }
+  | { type: 'ADD_TO_CART'; payload: ICartItem }
   | { type: 'REMOVE_FROM_CART'; payload: number }
-  | { type: 'UPDATE_CART_ITEM'; payload: CartItem }
+  | { type: 'INCREMENT_CART_ITEM'; payload: number }
+  | { type: 'DECREMENT_CART_ITEM'; payload: number }
   | { type: 'CLEAR_CART' };
 
 export const initialState: CartState = {
@@ -41,15 +43,27 @@ export const cartReducer = (state: CartState, action: CartAction) => {
         total: state.total - (findCartItem ? findCartItem.price : 0),
         ids: { ...state.ids, [action.payload]: false },
       };
-    case 'UPDATE_CART_ITEM':
+    case 'INCREMENT_CART_ITEM':
       return {
         ...state,
         cartItems: state.cartItems.map((item) => {
-          if (item.id === action.payload.id) {
-            return action.payload;
+          if (item.id === action.payload) {
+            return { ...item, quantity: item.quantity + 1 };
           }
           return item;
         }),
+        total: state.total + state.cartItems.find((item) => item.id === action.payload)!.price,
+      };
+    case 'DECREMENT_CART_ITEM':
+      return {
+        ...state,
+        cartItems: state.cartItems.map((item) => {
+          if (item.id === action.payload) {
+            return { ...item, quantity: item.quantity - 1 };
+          }
+          return item;
+        }),
+        total: state.total - state.cartItems.find((item) => item.id === action.payload)!.price,
       };
     case 'CLEAR_CART':
       return {
