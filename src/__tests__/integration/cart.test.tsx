@@ -3,13 +3,15 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import CartProvider, { useCartContext, useCartDispatch } from '../../context/Cart/cartContext';
+import CartButton from '../../components/Cart/CartButton';
+import Product from '../../components/Store/Products/Product';
 
 function MockComponent() {
   const cart = useCartContext();
   const actions = useCartDispatch();
   return (
     <div>
-      {cart!.total}
+      <p>{cart!.total}</p>
       <button
         type="button"
         onClick={() =>
@@ -19,7 +21,7 @@ function MockComponent() {
           })
         }
       >
-        Add to cart
+        Add to cart test
       </button>
       <button
         type="button"
@@ -42,6 +44,17 @@ function MockComponent() {
       >
         Clear cart
       </button>
+      <CartButton />
+      <Product
+        product={{
+          id: 20,
+          title: 'testItem',
+          price: 100,
+          category: { id: 1, name: 'test', image: '' },
+          description: '',
+          images: [''],
+        }}
+      />
     </div>
   );
 }
@@ -56,7 +69,7 @@ describe('CartProvider', () => {
   });
 
   it('should dispatch actions to the cartReducer', async () => {
-    const button = screen.getByText('Add to cart');
+    const button = screen.getByText('Add to cart test');
     await userEvent.click(button);
     expect(screen.getByText('100')).toBeInTheDocument();
   });
@@ -64,7 +77,7 @@ describe('CartProvider', () => {
 
 describe('Cart Context', () => {
   it('should remove an item from the cart', async () => {
-    const addButton = screen.getByText('Add to cart');
+    const addButton = screen.getByText('Add to cart test');
     const removeButton = screen.getByText('Remove from cart');
     await userEvent.click(addButton);
     await userEvent.click(removeButton);
@@ -72,12 +85,26 @@ describe('Cart Context', () => {
   });
 
   it('should clear the cart', async () => {
-    const addButton = screen.getByText('Add to cart');
+    const addButton = screen.getByText('Add to cart test');
     const clearButton = screen.getByText('Clear cart');
     await userEvent.click(addButton);
     await userEvent.click(addButton);
     await userEvent.click(addButton);
     await userEvent.click(clearButton);
     expect(screen.getByText('0')).toBeInTheDocument();
-  })
+  });
+});
+
+describe('Products on cart', () => {
+  it('should display one product', async () => {
+    const addButton = screen.getByText('Add to cart test');
+    await userEvent.click(addButton);
+    expect(screen.getByText('1')).toBeInTheDocument();
+  });
+
+  it('should add a product from the product card', async () => {
+    const addButton = screen.getByText('Add to cart');
+    await userEvent.click(addButton);
+    expect(screen.getByText('1')).toBeInTheDocument();
+  });
 });
