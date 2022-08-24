@@ -1,5 +1,6 @@
 import React from 'react';
 import PlusSvg from '../Svg/PlusSvg';
+import CheckSvg from '../Svg/CheckSvg';
 
 type ButtonProps = {
   onClick: () => void;
@@ -18,7 +19,7 @@ function ProductButton({ onClick, disabled }: ButtonProps) {
       onClick={onClick}
       disabled={disabled}
     >
-      <PlusSvg />
+      {disabled ? <CheckSvg /> : <PlusSvg />}
       <span className="text-sm">{disabled ? 'Added to cart' : 'Add to cart'}</span>
     </button>
   );
