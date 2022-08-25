@@ -17,6 +17,7 @@ export type CartAction =
   | { type: 'REMOVE_FROM_CART'; payload: number }
   | { type: 'INCREMENT_CART_ITEM'; payload: number }
   | { type: 'DECREMENT_CART_ITEM'; payload: number }
+  | { type: 'MODIFY_CART_ITEM'; payload: { id: number; quantity: number } }
   | { type: 'CLEAR_CART' };
 
 export const initialState: CartState = {
@@ -64,6 +65,22 @@ export const cartReducer = (state: CartState, action: CartAction) => {
           return item;
         }),
         total: state.total - state.cartItems.find((item) => item.id === action.payload)!.price,
+      };
+    case 'MODIFY_CART_ITEM':
+      return {
+        ...state,
+        cartItems: state.cartItems.map((item) => {
+          if (item.id === action.payload.id) {
+            return { ...item, quantity: action.payload.quantity };
+          }
+          return item;
+        }),
+        total: state.cartItems.reduce((acc, item) => {
+          if (item.id === action.payload.id) {
+            return acc + item.price * action.payload.quantity;
+          }
+          return acc + item.price * item.quantity;
+        }, 0),
       };
     case 'CLEAR_CART':
       return {
