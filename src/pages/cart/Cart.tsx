@@ -10,7 +10,7 @@ function Cart() {
   }
   return (
     <>
-      <section>
+      <section className="flex flex-col items-center p-10 gap-4">
         {cartState?.cartItems.map((item) => (
           <CartItem key={item.id} item={item} />
         ))}

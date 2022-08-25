@@ -13,12 +13,12 @@ function CartProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function useCartContext(){
+export function useCartContext() {
   return useContext(CartContext);
 }
 
-export function useCartDispatch(){
+export function useCartDispatch() {
   return useContext(CartDispatchContext);
 }
 
- export default CartProvider;
+export default CartProvider;
