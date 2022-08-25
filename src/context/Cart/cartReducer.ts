@@ -41,7 +41,7 @@ export const cartReducer = (state: CartState, action: CartAction) => {
       return {
         ...state,
         cartItems: state.cartItems.filter((item) => item.id !== action.payload),
-        total: state.total - (findCartItem ? findCartItem.price : 0),
+        total: state.total - (findCartItem ? findCartItem.price * findCartItem.quantity : 0),
         ids: { ...state.ids, [action.payload]: false },
       };
     case 'INCREMENT_CART_ITEM':
