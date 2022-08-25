@@ -13,10 +13,17 @@ function CartItemController({ quantity, itemId }: CartItemControllerProps) {
   };
 
   const handleDecrement = () => {
+    if(quantity === 1){
+      dispatch?.({ type: 'REMOVE_FROM_CART', payload: itemId });
+      return;
+    }
     dispatch?.({ type: 'DECREMENT_CART_ITEM', payload: itemId });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if(+e.currentTarget.value === 0) {
+      return
+    }
     dispatch?.({
       type: 'MODIFY_CART_ITEM',
       payload: { id: itemId, quantity: +e.currentTarget.value },
@@ -27,7 +34,7 @@ function CartItemController({ quantity, itemId }: CartItemControllerProps) {
       <button type="button" onClick={() => handleDecrement()}>
         -
       </button>
-      <input type="text" value={quantity} onChange={(e) => handleChange(e)} />
+      <input type="number" min="1" value={quantity} onChange={(e) => handleChange(e)} />
       <span>{quantity}</span>
       <button type="button" onClick={() => handleIncrement()}>
         +
