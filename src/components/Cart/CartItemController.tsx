@@ -30,13 +30,12 @@ function CartItemController({ quantity, itemId }: CartItemControllerProps) {
     });
   };
   return (
-    <div>
-      <button type="button" onClick={() => handleDecrement()}>
+    <div className="flex gap-2">
+      <button className="text-red-500 font-bold" type="button" onClick={() => handleDecrement()}>
         -
       </button>
-      <input type="number" min="1" value={quantity} onChange={(e) => handleChange(e)} />
-      <span>{quantity}</span>
-      <button type="button" onClick={() => handleIncrement()}>
+      <input className="text-center w-8" type="text" value={quantity} onChange={(e) => handleChange(e)} />
+      <button className="text-green-500 font-bold" type="button" onClick={() => handleIncrement()}>
         +
       </button>
     </div>
