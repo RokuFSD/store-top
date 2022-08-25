@@ -1,7 +1,7 @@
 import React from 'react';
 import { ICartItem } from '../../context/Cart/cartReducer';
-import CartItemController from './CartItemController';
 import { useCartDispatch } from '../../context/Cart/cartContext';
+import CartItemController from './CartItemController';
 import CrossSvg from '../Svg/CrossSvg';
 
 type CartItemProps = {
@@ -15,7 +15,12 @@ function CartItem({ item }: CartItemProps) {
   };
   return (
     <div className="flex w-128 bg-white p-4 gap-4 relative">
-      <button className="absolute right-4" type="button" title="Remove" onClick={() => handleRemove()}>
+      <button
+        className="absolute right-4"
+        type="button"
+        title="Remove"
+        onClick={() => handleRemove()}
+      >
         <CrossSvg />
       </button>
       <img src={item.image} alt="product" className="w-60" />
