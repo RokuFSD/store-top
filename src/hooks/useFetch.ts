@@ -44,7 +44,6 @@ function useFetch<T = unknown>(url?: string, options?: RequestInit): State<T> {
 
     const fetchData = async () => {
       dispatch({ type: 'loading' });
-
       if (cache.current[url]) {
         dispatch({ type: 'fetched', payload: cache.current[url] });
         return;
@@ -57,7 +56,6 @@ function useFetch<T = unknown>(url?: string, options?: RequestInit): State<T> {
         const data = await response.json();
         cache.current[url] = data;
         if (cancelRequest.current) return;
-
         dispatch({ type: 'fetched', payload: data });
       } catch (error) {
         if (cancelRequest.current) return;
@@ -69,7 +67,7 @@ function useFetch<T = unknown>(url?: string, options?: RequestInit): State<T> {
     // eslint-disable-next-line consistent-return
     return () => {
       cancelRequest.current = true;
-    }
+    };
   }, [url]);
 
   return state;

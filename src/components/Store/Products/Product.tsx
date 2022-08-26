@@ -23,7 +23,7 @@ function Product({ product }: ProductProps) {
     <div className='flex flex-col overflow-hidden gap-3 w-64 card md:w-60'>
       <img src={product.image ? product.image : fallbackImg} alt='product' className="object-contain bg-white"/>
       <h2 className='font-semibold px-1 h-20'>
-        {product.title}
+        <span className="line-clamp-1">{product.title}</span>
         <span className='block line-clamp-2 font-normal text-xs w-44'>{product.description}</span>
       </h2>
       <div className='w-full flex justify-between items-center px-1 my-1'>

@@ -13,11 +13,11 @@ const URL = 'https://fakestoreapi.com';
 function Store({ isSmallScreen }: StoreProps) {
   const { data: products, error } = useFetch<IProduct[]>(`${URL}/products`);
 
-  if(error){
+  if (error) {
     return <div>There is an error</div>;
   }
 
-  if(!products){
+  if (!products) {
     return <div>Loading...</div>;
   }
   return (
@@ -25,9 +25,9 @@ function Store({ isSmallScreen }: StoreProps) {
       {isSmallScreen ? null : <Sidebar />}
       <Routes>
         <Route path="/">
-          <Route index element={<ProductsList products={products}/>} />
-          <Route path="category" element={<ProductsList products={products}/>} />
-          <Route path="category/:id" element={<ProductsList products={products}/>} />
+          <Route index element={<ProductsList products={products} />} />
+          <Route path="category" element={<ProductsList products={products} />} />
+          <Route path="category/:id" element={<ProductsList products={products} />} />
         </Route>
       </Routes>
     </section>
