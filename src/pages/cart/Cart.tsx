@@ -22,13 +22,13 @@ function Cart() {
   }
 
   return (
-    <div className="grid grid-cols-12 relative">
-      <section className="flex flex-col p-10 gap-4 col-start-3 col-span-6">
+    <div className="grid grid-cols-12 relative md:p-10">
+      <section className="flex flex-col p-2 gap-4 col-span-full place-items-center lg:col-start-3 lg:col-span-3">
         {cartState?.cartItems.map((item) => (
           <CartItem key={item.id} item={item} />
         ))}
       </section>
-      <div className="fixed col-start-9 right-0">
+      <div className="lg:col-start-8">
         {cartState?.total}
         <button type="button" className="btn" disabled>
           CheckOut
