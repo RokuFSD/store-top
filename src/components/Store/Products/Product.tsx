@@ -15,7 +15,7 @@ function Product({ product }: ProductProps) {
     dispatch?.({
       type: 'ADD_TO_CART',
       // eslint-disable-next-line no-underscore-dangle
-      payload: { id: +product._id, name: product.title, quantity: 1, ...product },
+      payload: { id: product._id, name: product.title, quantity: 1, ...product },
     });
   }
 
@@ -29,7 +29,7 @@ function Product({ product }: ProductProps) {
       <div className="w-full flex justify-between items-center px-1 my-1">
         <span className="text-md">$ {product.price}</span>
         {/* eslint-disable-next-line no-underscore-dangle */}
-        <ProductButton onClick={() => addToCart()} disabled={cart?.ids[+product._id]} />
+        <ProductButton onClick={() => addToCart()} disabled={cart?.ids[product._id]} />
       </div>
     </div>
   );
