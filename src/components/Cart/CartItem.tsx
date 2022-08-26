@@ -3,6 +3,7 @@ import { ICartItem } from '../../context/Cart/cartReducer';
 import { useCartDispatch } from '../../context/Cart/cartContext';
 import CartItemController from './CartItemController';
 import CrossSvg from '../Svg/CrossSvg';
+import fallbackImg from '../../assets/pngwing.com.png';
 
 type CartItemProps = {
   item: ICartItem;
@@ -23,7 +24,7 @@ function CartItem({ item }: CartItemProps) {
       >
         <CrossSvg />
       </button>
-      <img src={item.image} alt="product" className="w-60" />
+      <img src={item.image ? item.image : fallbackImg} alt="product" className="w-60" />
       <div className="flex flex-col justify-between w-full">
         <h2>{item.name}</h2>
         <div className="flex justify-between">
