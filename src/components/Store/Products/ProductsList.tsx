@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import Product from './Product';
@@ -16,7 +15,6 @@ function ProductsList({ products }: ProductsListProps) {
     <div className="productsList">
       <section className="grid gap-4 place-items-center md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {filteredProducts?.map((product) => (
-          // eslint-disable-next-line no-underscore-dangle
           <Product key={product.id} product={product} />
         ))}
       </section>

@@ -3,7 +3,6 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import CartProvider, { useCartContext, useCartDispatch } from '../../context/Cart/cartContext';
-import CartButton from '../../components/Cart/CartButton';
 import Product from '../../components/Store/Products/Product';
 
 function MockComponent() {
@@ -17,7 +16,7 @@ function MockComponent() {
         onClick={() =>
           actions!({
             type: 'ADD_TO_CART',
-            payload: { id: 20, name: 'testItem', price: 100, quantity: 1 },
+            payload: { id: 20, name: 'testItem', price: 100, quantity: 1, image: '' },
           })
         }
       >
@@ -44,15 +43,14 @@ function MockComponent() {
       >
         Clear cart
       </button>
-      <CartButton />
       <Product
         product={{
           id: 20,
           title: 'testItem',
           price: 100,
-          category: { id: 1, name: 'test', image: '' },
+          category: "",
           description: '',
-          images: [''],
+          image: "",
         }}
       />
     </div>
@@ -96,15 +94,9 @@ describe('Cart Context', () => {
 });
 
 describe('Products on cart', () => {
-  it('should display one product', async () => {
-    const addButton = screen.getByText('Add to cart test');
-    await userEvent.click(addButton);
-    expect(screen.getByText('1')).toBeInTheDocument();
-  });
-
   it('should add a product from the product card', async () => {
     const addButton = screen.getByText('Add to cart');
     await userEvent.click(addButton);
-    expect(screen.getByText('1')).toBeInTheDocument();
+    expect(screen.getByText('Added to cart')).toBeInTheDocument();
   });
 });

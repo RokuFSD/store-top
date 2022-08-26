@@ -15,7 +15,6 @@ function Product({ product }: ProductProps) {
   function addToCart() {
     dispatch?.({
       type: 'ADD_TO_CART',
-      // eslint-disable-next-line no-underscore-dangle
       payload: { name: product.title, quantity: 1, ...product }
     });
   }
@@ -29,11 +28,10 @@ function Product({ product }: ProductProps) {
       </h2>
       <div className='w-full flex justify-between items-center px-1 my-1'>
         <span className='text-md'>$ {product.price}</span>
-        {/* eslint-disable-next-line no-underscore-dangle */}
         <ProductButton onClick={() => addToCart()} disabled={cart?.ids[product.id]} />
       </div>
     </div>
 );
 }
 
-export default React.memo(Product);
+export default Product;
