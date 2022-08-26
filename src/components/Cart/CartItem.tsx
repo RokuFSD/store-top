@@ -17,7 +17,7 @@ function CartItem({ item }: CartItemProps) {
     dispatch?.({ type: 'REMOVE_FROM_CART', payload: item.id });
   };
   return (
-    <div className="flex w-128 bg-white p-4 gap-4 relative">
+    <div className="flex w-128 h-52 bg-white p-4 gap-4 relative">
       <button
         className="absolute right-4"
         type="button"
@@ -26,9 +26,9 @@ function CartItem({ item }: CartItemProps) {
       >
         <CrossSvg />
       </button>
-      <img src={item.image ? item.image : fallbackImg} alt="product" className="w-60" />
+      <img src={item.image ? item.image : fallbackImg} alt="product" className="object-contain w-40"/>
       <div className="flex flex-col justify-between w-full">
-        <h2>{item.name}</h2>
+        <h2 className="w-64">{item.name}</h2>
         <div className="flex justify-between">
           <span>
             {item.price} x {item.quantity}
