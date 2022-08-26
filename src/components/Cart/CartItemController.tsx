@@ -3,7 +3,7 @@ import { useCartDispatch } from '../../context/Cart/cartContext';
 
 type CartItemControllerProps = {
   quantity: number;
-  itemId: number;
+  itemId: string;
 };
 
 function CartItemController({ quantity, itemId }: CartItemControllerProps) {
