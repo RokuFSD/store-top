@@ -3,10 +3,10 @@ import { NavLink } from 'react-router-dom';
 import { ICategory } from '../../types/api';
 import useFetch from '../../hooks/useFetch';
 
-const URL = 'https://api.escuelajs.co/api/v1/categories';
+const URL = 'https://api.storerestapi.com/categories';
 
 function Sidebar() {
-  const { data: categories, error } = useFetch<ICategory[]>(URL);
+  const { data: categories, error } = useFetch<{ data: ICategory[] }>(URL);
 
   if (error) {
     return <div>There is an error</div>;
@@ -18,8 +18,9 @@ function Sidebar() {
       {!categories ? (
         <div>Loading...</div>
       ) : (
-        categories.map((category) => (
-          <NavLink key={category.id} to={`category/${category.id}`}>
+        categories.data.map((category) => (
+          // eslint-disable-next-line no-underscore-dangle
+          <NavLink key={category._id} to={`category/${category.slug}`}>
             {category.name}
           </NavLink>
         ))

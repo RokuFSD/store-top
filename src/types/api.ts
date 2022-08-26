@@ -1,19 +1,15 @@
-interface Category {
-  id: number;
-  image: string;
-  name: string;
-}
-
 export interface IProduct {
-  category: Category;
-  id: number;
+  category: ICategory;
+  _id: string;
   title: string;
   price: number;
   description: string;
-  images: string[];
+  image: string;
 }
 
 export interface ICategory {
-  id: number;
+  _id: number;
   name: string;
+  slug: string;
+  products: IProduct[];
 }
