@@ -1,5 +1,5 @@
 export interface ICartItem {
-  id: string;
+  id: number;
   name: string;
   price: number;
   quantity: number;
@@ -9,15 +9,15 @@ export interface ICartItem {
 export type CartState = {
   cartItems: ICartItem[];
   total: number;
-  ids: { [key: string]: boolean };
+  ids: { [key: number]: boolean };
 };
 
 export type CartAction =
   | { type: 'ADD_TO_CART'; payload: ICartItem }
-  | { type: 'REMOVE_FROM_CART'; payload: string }
-  | { type: 'INCREMENT_CART_ITEM'; payload: string }
-  | { type: 'DECREMENT_CART_ITEM'; payload: string }
-  | { type: 'MODIFY_CART_ITEM'; payload: { id: string; quantity: number } }
+  | { type: 'REMOVE_FROM_CART'; payload: number }
+  | { type: 'INCREMENT_CART_ITEM'; payload: number }
+  | { type: 'DECREMENT_CART_ITEM'; payload: number }
+  | { type: 'MODIFY_CART_ITEM'; payload: { id: number; quantity: number } }
   | { type: 'CLEAR_CART' };
 
 export const initialState: CartState = {

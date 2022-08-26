@@ -1,15 +1,8 @@
 export interface IProduct {
-  category: ICategory;
-  _id: string;
+  category: string;
+  id: number;
   title: string;
   price: number;
   description: string;
   image: string;
-}
-
-export interface ICategory {
-  _id: number;
-  name: string;
-  slug: string;
-  products: IProduct[];
 }

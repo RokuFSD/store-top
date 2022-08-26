@@ -8,16 +8,16 @@ import { IProduct } from '../../types/api';
 type StoreProps = {
   isSmallScreen: boolean;
 };
-const URL = 'https://api.storerestapi.com';
+const URL = 'https://fakestoreapi.com';
 
 function Store({ isSmallScreen }: StoreProps) {
-  const { data, error } = useFetch<{ data: IProduct[] }>(`${URL}/products`);
+  const { data: products, error } = useFetch<IProduct[]>(`${URL}/products`);
 
   if(error){
     return <div>There is an error</div>;
   }
 
-  if(!data){
+  if(!products){
     return <div>Loading...</div>;
   }
   return (
@@ -25,9 +25,9 @@ function Store({ isSmallScreen }: StoreProps) {
       {isSmallScreen ? null : <Sidebar />}
       <Routes>
         <Route path="/">
-          <Route index element={<ProductsList products={data.data}/>} />
-          <Route path="category" element={<ProductsList products={data.data}/>} />
-          <Route path="category/:id" element={<ProductsList products={data.data}/>} />
+          <Route index element={<ProductsList products={products}/>} />
+          <Route path="category" element={<ProductsList products={products}/>} />
+          <Route path="category/:id" element={<ProductsList products={products}/>} />
         </Route>
       </Routes>
     </section>

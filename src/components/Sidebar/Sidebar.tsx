@@ -1,12 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { ICategory } from '../../types/api';
 import useFetch from '../../hooks/useFetch';
 
-const URL = 'https://api.storerestapi.com/categories';
+const URL = 'https://fakestoreapi.com';
 
 function Sidebar() {
-  const { data: categories, error } = useFetch<{ data: ICategory[] }>(URL);
+  const { data: categories, error } = useFetch<string[]>(`${URL}/products/categories`);
 
   if (error) {
     return <div>There is an error</div>;
@@ -18,10 +17,10 @@ function Sidebar() {
       {!categories ? (
         <div>Loading...</div>
       ) : (
-        categories.data.map((category) => (
+        categories.map((category) => (
           // eslint-disable-next-line no-underscore-dangle
-          <NavLink key={category._id} to={`category/${category.slug}`}>
-            {category.name}
+          <NavLink key={category} to={`category/${category}`}>
+            {category}
           </NavLink>
         ))
       )}
