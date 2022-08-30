@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import ShopButton from '../Button/ShopButton';
 
 function CartEmpty() {
   return (
@@ -9,14 +9,7 @@ function CartEmpty() {
     >
       <h2 className="text-center text-gray-500 text-2xl">Your cart is empty...</h2>
       <img src="src/assets/cat-astronaut-rafiki.svg" alt="cart" className="w-full" />
-      <Link to="/store">
-        <button
-          type="button"
-          className="flex items-center justify-center transition-all border-2 border-neutral-800 text-xl bg-neutral-800 text-neutral-200 rounded-full w-40 h-11 hover:bg-transparent hover:text-neutral-800 withArrow"
-        >
-          Shop Now
-        </button>
-      </Link>
+      <ShopButton/>
     </div>
   );
 }
