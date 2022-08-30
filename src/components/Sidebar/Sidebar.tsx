@@ -18,7 +18,6 @@ function Sidebar() {
         <div>Loading...</div>
       ) : (
         categories.map((category) => (
-          // eslint-disable-next-line no-underscore-dangle
           <NavLink key={category} to={`category/${category}`}>
             {category}
           </NavLink>

@@ -18,6 +18,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/store/*" element={<Store isSmallScreen={isSmallScreen} />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="*" element={<div>404</div>}/>
         </Routes>
       </Main>
       <Footer />

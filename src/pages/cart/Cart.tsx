@@ -18,7 +18,7 @@ function Cart() {
         ))}
       </section>
       <div className="lg:col-start-8">
-        {cartState?.total}
+        <span>Cart Total: ${cartState?.total.toFixed(2)}</span>
         <button type="button" className="btn" disabled>
           CheckOut
         </button>
