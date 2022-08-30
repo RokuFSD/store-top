@@ -1,9 +1,10 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { IProduct } from '../../types/api';
 import ProductsList from '../../components/Store/Products/ProductsList';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import useFetch from '../../hooks/useFetch';
-import { IProduct } from '../../types/api';
+import Loader from '../../components/Loader/Loader';
 
 type StoreProps = {
   isSmallScreen: boolean;
@@ -18,7 +19,7 @@ function Store({ isSmallScreen }: StoreProps) {
   }
 
   if (!products) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
   return (
     <section className="flex flex-col items-center py-16 justify-center gap-20 md:flex-row md:items-start">
