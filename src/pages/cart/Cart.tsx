@@ -11,7 +11,7 @@ function Cart() {
   }
 
   return (
-    <div className="grid grid-cols-12 relative p-2  md:p-10">
+    <div className="grid grid-cols-12 relative p-2 max-w-7xl mx-auto md:p-10">
       <section className="flex flex-col gap-4 col-span-full place-items-center lg:col-start-3 lg:col-span-3">
         {cartState?.cartItems.map((item) => (
           <CartItem key={item.id} item={item} />
