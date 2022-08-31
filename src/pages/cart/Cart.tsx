@@ -11,14 +11,14 @@ function Cart() {
   }
 
   return (
-    <div className="grid grid-cols-12 relative md:p-10">
-      <section className="flex flex-col p-2 gap-4 col-span-full place-items-center lg:col-start-3 lg:col-span-3">
+    <div className="grid grid-cols-12 relative p-2  md:p-10">
+      <section className="flex flex-col gap-4 col-span-full place-items-center lg:col-start-3 lg:col-span-3">
         {cartState?.cartItems.map((item) => (
           <CartItem key={item.id} item={item} />
         ))}
       </section>
-      <div className="lg:col-start-8">
-        <span>Cart Total: ${cartState?.total.toFixed(2)}</span>
+      <div className="h-20 flex my-10 justify-center gap-4 flex-wrap col-span-full lg:col-start-8">
+        <span className="basis-full text-center">Cart Total: ${cartState?.total.toFixed(2)}</span>
         <button type="button" className="btn" disabled>
           CheckOut
         </button>
@@ -28,3 +28,4 @@ function Cart() {
 }
 
 export default Cart;
+
