@@ -6,6 +6,7 @@ import Home from './pages/home/Home';
 import Store from './pages/store/Store';
 import Cart from './pages/cart/Cart';
 import Main from './layouts/Main/Main';
+import ProductPage from './pages/product/ProductPage';
 import useMediaQuery from './hooks/useMediaQuery';
 
 function App() {
@@ -18,7 +19,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/store/*" element={<Store isSmallScreen={isSmallScreen} />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="*" element={<div>404</div>}/>
+          <Route path="/products/:id" element={<ProductPage />} />
+          <Route path="*" element={<div>404</div>} />
         </Routes>
       </Main>
       <Footer />
