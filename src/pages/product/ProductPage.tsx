@@ -1,9 +1,18 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
+import { IProduct } from '../../types/api';
+import {ProductDetails, WithFetchProductDetails} from '../../components/Product/ProductDetails';
 
 function ProductPage() {
   const { id } = useParams();
-  return <div>{id}</div>;
+  const location = useLocation();
+  const product = location.state as IProduct;
+
+  if (product) {
+    return <ProductDetails product={product}/>
+  }
+
+  return <WithFetchProductDetails id={+id!}/>;
 }
 
 export default ProductPage;

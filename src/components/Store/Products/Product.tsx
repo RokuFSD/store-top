@@ -22,7 +22,7 @@ function Product({ product }: ProductProps) {
 
   return (
     <div className="flex flex-col overflow-hidden gap-3 w-64 card md:w-60">
-      <Link to={`/products/${product.id}`}>
+      <Link to={`/products/${product.id}`} state={product}>
         <img
           src={product.image ? product.image : fallbackImg}
           alt="product"
