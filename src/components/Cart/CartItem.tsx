@@ -9,8 +9,6 @@ type CartItemProps = {
   item: ICartItem;
 };
 
-/* TODO: Styles for the image */
-
 function CartItem({ item }: CartItemProps) {
   const dispatch = useCartDispatch();
   const handleRemove = () => {
