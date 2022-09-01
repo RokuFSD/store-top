@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import useFetch from '../../hooks/useFetch';
+import SideBarLink from './SideBarLink';
 
 const URL = 'https://fakestoreapi.com';
 
@@ -18,9 +19,7 @@ function Sidebar() {
         <div>Loading...</div>
       ) : (
         categories.map((category) => (
-          <NavLink key={category} to={`category/${category}`}>
-            {category}
-          </NavLink>
+          <SideBarLink name={category} key={category} />
         ))
       )}
     </section>
