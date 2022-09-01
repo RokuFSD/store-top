@@ -27,7 +27,7 @@ function Store({ isSmallScreen }: StoreProps) {
       <Routes>
         <Route path="/">
           <Route index element={<ProductsList products={products} />} />
-          <Route path="category" element={<ProductsList products={products} />} />
+          <Route path="category" element={<ProductsList  products={products} />} />
           <Route path="category/:id" element={<ProductsList products={products} />} />
         </Route>
       </Routes>

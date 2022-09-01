@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import { ICartItem } from '../../context/Cart/cartReducer';
 import { useCartDispatch } from '../../context/Cart/cartContext';
 import CartItemController from './CartItemController';
@@ -9,7 +9,7 @@ type CartItemProps = {
   item: ICartItem;
 };
 
-function CartItem({ item }: CartItemProps) {
+function CartItem ({ item }: CartItemProps) {
   const dispatch = useCartDispatch();
   const handleRemove = () => {
     dispatch?.({ type: 'REMOVE_FROM_CART', payload: item.id });
@@ -42,6 +42,6 @@ function CartItem({ item }: CartItemProps) {
   );
 }
 
-const MemoizedCartItem = React.memo(CartItem);
+const MemoCartItem = memo(CartItem);
 
-export default MemoizedCartItem;
+export default MemoCartItem;

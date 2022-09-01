@@ -2,6 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
+import { MemoryRouter } from 'react-router-dom';
 import CartProvider, { useCartContext, useCartDispatch } from '../../context/Cart/cartContext';
 import Product from '../../components/Store/Products/Product';
 
@@ -9,51 +10,53 @@ function MockComponent() {
   const cart = useCartContext();
   const actions = useCartDispatch();
   return (
-    <div>
-      <p>{cart!.total}</p>
-      <button
-        type="button"
-        onClick={() =>
-          actions!({
-            type: 'ADD_TO_CART',
-            payload: { id: 20, name: 'testItem', price: 100, quantity: 1, image: '' },
-          })
-        }
-      >
-        Add to cart test
-      </button>
-      <button
-        type="button"
-        onClick={() =>
-          actions!({
-            type: 'REMOVE_FROM_CART',
-            payload: 20,
-          })
-        }
-      >
-        Remove from cart
-      </button>
-      <button
-        type="button"
-        onClick={() =>
-          actions!({
-            type: 'CLEAR_CART',
-          })
-        }
-      >
-        Clear cart
-      </button>
-      <Product
-        product={{
-          id: 20,
-          title: 'testItem',
-          price: 100,
-          category: "",
-          description: '',
-          image: "",
-        }}
-      />
-    </div>
+    <MemoryRouter>
+      <div>
+        <p>{cart!.total}</p>
+        <button
+          type="button"
+          onClick={() =>
+            actions!({
+              type: 'ADD_TO_CART',
+              payload: { id: 20, name: 'testItem', price: 100, quantity: 1, image: '' },
+            })
+          }
+        >
+          Add to cart test
+        </button>
+        <button
+          type="button"
+          onClick={() =>
+            actions!({
+              type: 'REMOVE_FROM_CART',
+              payload: 20,
+            })
+          }
+        >
+          Remove from cart
+        </button>
+        <button
+          type="button"
+          onClick={() =>
+            actions!({
+              type: 'CLEAR_CART',
+            })
+          }
+        >
+          Clear cart
+        </button>
+        <Product
+          product={{
+            id: 20,
+            title: 'testItem',
+            price: 100,
+            category: '',
+            description: '',
+            image: '',
+          }}
+        />
+      </div>
+    </MemoryRouter>
   );
 }
 
