@@ -42,4 +42,6 @@ function CartItem({ item }: CartItemProps) {
   );
 }
 
-export default CartItem;
+const MemoizedCartItem = React.memo(CartItem);
+
+export default MemoizedCartItem;
