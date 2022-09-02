@@ -26,15 +26,17 @@ function ProductDetails({ product }: ProductDetailsProps) {
   }
 
   return (
-    <div className="grid-cols-12 grid-rows-2">
+    <div className="grid grid-cols-12">
       {/* Card Details */}
-      <div className="flex">
-        <img src={product.image} alt="product" />
-        <div className="flex flex-col">
-          <div>
-            <h1 className="text-3xl">{product.title}</h1>
-            <p>{product.description}</p>
-            <p>${product.price}</p>
+      <div className="flex flex-col col-span-full">
+        <div className="bg-white flex justify-center">
+          <img src={product.image} alt="product" className="w-40" />
+        </div>
+        <div className="flex flex-col p-2">
+          <div className="flex flex-col gap-4">
+            <h1 className="text-xl">{product.title}</h1>
+            <p className="text-sm">{product.description}</p>
+            <p className="font-semibold">${product.price}</p>
           </div>
           <ProductButton onClick={() => addToCart()} id={product.id} />
         </div>
