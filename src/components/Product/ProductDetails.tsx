@@ -31,11 +31,13 @@ function ProductDetails({ product }: ProductDetailsProps) {
       <div className="flex">
         <img src={product.image} alt="product" />
         <div className="flex flex-col">
-          <h1 className="text-3xl">{product.title}</h1>
-          <p>{product.description}</p>
-          <p>${product.price}</p>
+          <div>
+            <h1 className="text-3xl">{product.title}</h1>
+            <p>{product.description}</p>
+            <p>${product.price}</p>
+          </div>
+          <ProductButton onClick={() => addToCart()} id={product.id} />
         </div>
-        <ProductButton onClick={() => addToCart()} id={product.id} />
       </div>
     </div>
   );
