@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { IProduct } from '../../../types/api';
-import { useCartContext, useCartDispatch } from '../../../context/Cart/cartContext';
+import { useCartDispatch } from '../../../context/Cart/cartContext';
 import ProductButton from '../../Button/ProductButton';
 import fallbackImg from '../../../assets/pngwing.com.png';
 
@@ -10,7 +10,6 @@ type ProductProps = {
 };
 
 function Product({ product }: ProductProps) {
-  const cart = useCartContext();
   const dispatch = useCartDispatch();
 
   function addToCart() {
@@ -35,7 +34,7 @@ function Product({ product }: ProductProps) {
       </Link>
       <div className="w-full flex justify-between items-center px-1 my-1">
         <span className="text-md">$ {product.price}</span>
-        <ProductButton onClick={() => addToCart()} disabled={cart?.ids[product.id]} />
+        <ProductButton onClick={() => addToCart()} id={product.id}/>
       </div>
     </div>
   );
