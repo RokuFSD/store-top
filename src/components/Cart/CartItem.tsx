@@ -1,4 +1,5 @@
 import React, {memo} from 'react';
+import { Link } from 'react-router-dom';
 import { ICartItem } from '../../context/Cart/cartReducer';
 import { useCartDispatch } from '../../context/Cart/cartContext';
 import CartItemController from './CartItemController';
@@ -30,7 +31,7 @@ function CartItem ({ item }: CartItemProps) {
         className="object-contain w-1/3"
       />
       <div className="flex flex-col justify-between w-full">
-        <h2 className="w-11/12 text-xs lg:text-base">{item.name}</h2>
+        <Link to={`/products/${item.id}`} state={item} className="w-11/12 text-xs lg:text-base hover:underline">{item.name}</Link>
         <div className="flex justify-between">
           <span>
             ${item.price} x {item.quantity}

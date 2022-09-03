@@ -1,9 +1,9 @@
 import React from 'react';
 import { IProduct } from '../../types/api';
+import { useCartDispatch } from '../../context/Cart/cartContext';
 import useFetch from '../../hooks/useFetch';
 import Loader from '../Loader/Loader';
 import ProductButton from '../Button/ProductButton';
-import { useCartDispatch } from '../../context/Cart/cartContext';
 import GoBackButton from '../Button/GoBackButton';
 
 const URL = 'https://fakestoreapi.com/products/';
