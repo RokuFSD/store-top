@@ -5,13 +5,12 @@ import ArrowSvg from '../Svg/ArrowSvg';
 function GoBackButton() {
   const navigate = useNavigate();
   return (
-    <div className="z-50 fixed bottom-4 left-6 md:left-20 lg:hidden">
+    <div className="flex justify-center bg-primary z-50 fixed rounded-full w-8 h-8 bottom-4 left-6 md:left-20 lg:hidden">
       <button
         type="button"
         onClick={() => navigate(-1)}
-        className="text-xs flex items-center gap-2"
       >
-        <div className="rotate-180">
+        <div className="rotate-180 pr-2">
           <ArrowSvg />
         </div>
       </button>

@@ -27,13 +27,13 @@ function ProductDetails({ product }: ProductDetailsProps) {
   }
 
   return (
-    <div className="grid grid-cols-12">
-      <div className="flex flex-col col-span-full">
-        <GoBackButton/>
-        <div className="bg-white flex justify-center p-2">
-          <img src={product.image} alt="product" className="w-40" />
+    <>
+      <GoBackButton />
+      <div className="flex flex-col">
+        <div className="bg-white flex justify-center p-2 h-56">
+          <img src={product.image} alt="product" className="object-contain"/>
         </div>
-        <div className="flex flex-col p-2 gap-12 max-w-lg place-self-center">
+        <div className="flex flex-col p-2 gap-12 max-w-lg place-self-center my-12">
           <div className="flex flex-col gap-6">
             <h1 className="text-xl font-semibold">{product.title}</h1>
             <p className="text-sm">{product.description}</p>
@@ -44,7 +44,7 @@ function ProductDetails({ product }: ProductDetailsProps) {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
