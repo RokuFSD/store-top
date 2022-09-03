@@ -29,16 +29,18 @@ function ProductDetails({ product }: ProductDetailsProps) {
     <div className="grid grid-cols-12">
       {/* Card Details */}
       <div className="flex flex-col col-span-full">
-        <div className="bg-white flex justify-center">
+        <div className="bg-white flex justify-center p-2">
           <img src={product.image} alt="product" className="w-40" />
         </div>
-        <div className="flex flex-col p-2">
-          <div className="flex flex-col gap-4">
-            <h1 className="text-xl">{product.title}</h1>
+        <div className="flex flex-col p-2 gap-12 max-w-lg place-self-center">
+          <div className="flex flex-col gap-6">
+            <h1 className="text-xl font-semibold">{product.title}</h1>
             <p className="text-sm">{product.description}</p>
-            <p className="font-semibold">${product.price}</p>
           </div>
-          <ProductButton onClick={() => addToCart()} id={product.id} />
+          <div className="place-self-center flex items-center justify-between w-full">
+            <p className="font-semibold">${product.price}</p>
+            <ProductButton onClick={() => addToCart()} id={product.id} />
+          </div>
         </div>
       </div>
     </div>
