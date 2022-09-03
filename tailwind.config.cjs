@@ -54,6 +54,9 @@ module.exports = {
         'slide-in-left': 'slide-in-left 0.5s ease-in-out',
         'slide-from-top': 'slide-from-top 0.5s ease-in-out',
         'slide-from-bottom': 'slide-from-bottom 0.5s ease-in-out'
+      },
+      colors:{
+        'primary': '#90CAF9',
       }
     }
   },
