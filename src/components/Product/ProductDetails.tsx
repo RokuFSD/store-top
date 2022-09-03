@@ -4,6 +4,7 @@ import useFetch from '../../hooks/useFetch';
 import Loader from '../Loader/Loader';
 import ProductButton from '../Button/ProductButton';
 import { useCartDispatch } from '../../context/Cart/cartContext';
+import GoBackButton from '../Button/GoBackButton';
 
 const URL = 'https://fakestoreapi.com/products/';
 
@@ -27,8 +28,8 @@ function ProductDetails({ product }: ProductDetailsProps) {
 
   return (
     <div className="grid grid-cols-12">
-      {/* Card Details */}
       <div className="flex flex-col col-span-full">
+        <GoBackButton/>
         <div className="bg-white flex justify-center p-2">
           <img src={product.image} alt="product" className="w-40" />
         </div>
