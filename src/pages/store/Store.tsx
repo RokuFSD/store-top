@@ -2,8 +2,8 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { IProduct } from '../../types/api';
 import ProductsList from '../../components/Store/Products/ProductsList';
-import Dropdown from '../../components/Dropdown/Dropdown';
-import Sidebar from '../../components/Sidebar/Sidebar';
+import Dropdown from '../../components/Categories/Dropdown/Dropdown';
+import Sidebar from '../../components/Categories/Sidebar/Sidebar';
 import useFetch from '../../hooks/useFetch';
 import Loader from '../../components/Loader/Loader';
 

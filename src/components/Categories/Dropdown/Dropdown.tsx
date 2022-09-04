@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import CategoryLink from '../CategoryLink';
 
 type DropdownProps = {
   label: string;
@@ -13,7 +14,7 @@ function DropdownMenu({ options }: DropdownMenuProps) {
   return (
     <ul>
       {options.map((option) => (
-        <li key={option}>{option}</li>
+        <CategoryLink key={option} name={option} />
       ))}
     </ul>
   );
