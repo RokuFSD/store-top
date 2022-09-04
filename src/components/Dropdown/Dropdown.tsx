@@ -1,41 +1,33 @@
 import React, { useState } from 'react';
-import useFetch from '../../hooks/useFetch';
-import Loader from '../Loader/Loader';
-
-const URL = 'https://fakestoreapi.com';
 
 type DropdownProps = {
   label: string;
+  options: string[];
 };
 
-function DropdownMenu() {
+interface DropdownMenuProps {
+  options: string[];
+}
+
+function DropdownMenu({ options }: DropdownMenuProps) {
   return (
     <ul>
-      <li>Item 1</li>
-      <li>Item 2</li>
-      <li>Item 3</li>
+      {options.map((option) => (
+        <li key={option}>{option}</li>
+      ))}
     </ul>
   );
 }
 
-function Dropdown({ label }: DropdownProps) {
-  const { data: categories, error } = useFetch<string[]>(`${URL}/products/categories`);
+function Dropdown({ label, options }: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
-
-  if (error) {
-    return <div>There is an error</div>;
-  }
-
-  if (!categories){
-    return <Loader />;
-  }
 
   return (
     <>
       <button type="button" onClick={() => setIsOpen(!isOpen)}>
         {label}
       </button>
-      {isOpen && <DropdownMenu />}
+      {isOpen && <DropdownMenu options={options} />}
     </>
   );
 }
