@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { IProduct } from '../../types/api';
 import ProductsList from '../../components/Store/Products/ProductsList';
+import Dropdown from '../../components/Dropdown/Dropdown';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import useFetch from '../../hooks/useFetch';
 import Loader from '../../components/Loader/Loader';
@@ -23,7 +24,7 @@ function Store({ isSmallScreen }: StoreProps) {
   }
   return (
     <section className="flex flex-col items-center py-16 justify-center gap-20 md:flex-row md:items-start">
-      {isSmallScreen ? null : <Sidebar />}
+      {isSmallScreen ? <Dropdown label="categories"/> : <Sidebar />}
       <Routes>
         <Route path="/">
           <Route index element={<ProductsList products={products} />} />
