@@ -27,7 +27,11 @@ function Store({ isSmallScreen }: StoreProps) {
   }
   return (
     <section className="flex flex-col items-center py-16 justify-center gap-20 md:flex-row md:items-start">
-      {isSmallScreen ? <Dropdown label="categories" options={categories} /> : <Sidebar />}
+      {isSmallScreen ? (
+        <Dropdown label="Categories" options={categories} />
+      ) : (
+        <Sidebar title="Categories" options={categories} />
+      )}
       <Routes>
         <Route path="/">
           <Route index element={<ProductsList products={products} />} />

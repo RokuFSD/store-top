@@ -1,25 +1,20 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import useFetch from '../../hooks/useFetch';
 import SidebarLink from './SidebarLink';
 
-const URL = 'https://fakestoreapi.com';
+type SidebarProps = {
+  title: string;
+  options: string[];
+};
 
-function Sidebar() {
-  const { data: categories, error } = useFetch<string[]>(`${URL}/products/categories`);
-
-  if (error) {
-    return <div>There is an error</div>;
-  }
+function Sidebar({ title, options }: SidebarProps) {
   return (
     <section className="flex flex-col px-4 w-56">
-      <h1 className="text-2xl">Categories</h1>
+      <h1 className="text-2xl">{title}</h1>
       <NavLink to="/store">All Products</NavLink>
-      {!categories ? (
-        <div>Loading...</div>
-      ) : (
-        categories.map((category) => <SidebarLink name={category} key={category} />)
-      )}
+      {options.map((option) => (
+        <SidebarLink name={option} key={option} />
+      ))}
     </section>
   );
 }
