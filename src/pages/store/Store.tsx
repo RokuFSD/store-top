@@ -26,7 +26,7 @@ function Store({ isSmallScreen }: StoreProps) {
     return <Loader />;
   }
   return (
-    <section className="flex flex-col items-center py-16 justify-center gap-20 md:flex-row md:items-start">
+    <section className="flex flex-col items-center py-16 gap-8 justify-center md:flex-row md:items-start md:gap-20">
       {isSmallScreen ? (
         <Dropdown label="Categories" options={categories} />
       ) : (
@@ -44,3 +44,4 @@ function Store({ isSmallScreen }: StoreProps) {
 }
 
 export default Store;
+

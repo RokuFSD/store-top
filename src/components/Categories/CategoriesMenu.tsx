@@ -10,7 +10,7 @@ function CategoriesMenu({ options }: CategoriesMenuProps) {
   return (
     <ul>
       <li>
-        <NavLink to="/store">All Products</NavLink>
+        <NavLink to="/store">all products</NavLink>
       </li>
       {options.map((option) => (
         <CategoryLink name={option} key={option} />
