@@ -5,6 +5,7 @@ import '@testing-library/jest-dom';
 import { MemoryRouter } from 'react-router-dom';
 import CartProvider, { useCartContext, useCartDispatch } from '../../context/Cart/cartContext';
 import Product from '../../components/Store/Products/Product';
+import CartItem from '../../components/Cart/CartItem';
 
 function MockComponent() {
   const cart = useCartContext();
@@ -55,6 +56,15 @@ function MockComponent() {
             image: '',
           }}
         />
+        <CartItem
+          item={{
+            id: 20,
+            name: 'testItem',
+            price: 100,
+            quantity: 1,
+            image: '',
+          }}
+        />
       </div>
     </MemoryRouter>
   );
@@ -102,4 +112,32 @@ describe('Products on cart', () => {
     await userEvent.click(addButton);
     expect(screen.getByText('Added to cart')).toBeInTheDocument();
   });
+});
+
+describe('Cart Item Controller', () => {
+  it('should increase the quantity of an item', async () => {
+    const addToCart = screen.getByText('Add to cart test');
+    const increaseButton = screen.getByText('+');
+    await userEvent.click(addToCart);
+    await userEvent.click(increaseButton);
+    await userEvent.click(increaseButton);
+    expect(screen.getByText('300')).toBeInTheDocument();
+  });
+
+  it('should decrease the quantity of an item', async () => {
+    const addToCart = screen.getByText('Add to cart test');
+    const decreaseButton = screen.getByText('-');
+    await userEvent.click(addToCart);
+    await userEvent.click(addToCart);
+    await userEvent.click(decreaseButton);
+    expect(screen.getByText('100')).toBeInTheDocument();
+  })
+
+  it('should change the quantity with the input', async () => {
+    const addToCart = screen.getByText('Add to cart test');
+    const input = screen.getByRole('textbox');
+    await userEvent.click(addToCart);
+    await userEvent.type(input, '5');
+    expect(screen.getByText('1500')).toBeInTheDocument();
+  })
 });
