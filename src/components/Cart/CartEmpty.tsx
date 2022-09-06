@@ -1,5 +1,6 @@
 import React from 'react';
 import ShopButton from '../Button/ShopButton';
+import emptyCartSvg from "../../assets/cat-astronaut-rafiki.svg"
 
 function CartEmpty() {
   return (
@@ -8,7 +9,7 @@ function CartEmpty() {
       -translate-y-1/2 max-w-md w-full "
     >
       <h2 className="text-center text-gray-500 text-2xl">Your cart is empty...</h2>
-      <img src="src/assets/cat-astronaut-rafiki.svg" alt="cart" className="w-full" />
+      <img src={emptyCartSvg} alt="cart" className="w-full" />
       <ShopButton/>
     </div>
   );
